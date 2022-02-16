@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <!-- プロジェクト基本設定 -->
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+  <!-- プロジェクト参照設定 -->
+  <ItemGroup>
+    <ProjectReference Include="..\Source.Code\Otchitta.Libraries.Screen.csproj" />
+  </ItemGroup>
+  <!-- プロジェクト拡張設定 -->
+</Project>

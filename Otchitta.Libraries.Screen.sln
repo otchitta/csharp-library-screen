@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Otchitta.Demo.Screen", "Source.Demo\Otchitta.Demo.Screen.csproj", "{7C09A24E-DA60-4CA3-BA97-2F081C4122DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Otchitta.Libraries.Screen", "Source.Code\Otchitta.Libraries.Screen.csproj", "{8E99D40A-C0D4-4312-8954-03DE855F463D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7C09A24E-DA60-4CA3-BA97-2F081C4122DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C09A24E-DA60-4CA3-BA97-2F081C4122DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C09A24E-DA60-4CA3-BA97-2F081C4122DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C09A24E-DA60-4CA3-BA97-2F081C4122DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E99D40A-C0D4-4312-8954-03DE855F463D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E99D40A-C0D4-4312-8954-03DE855F463D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E99D40A-C0D4-4312-8954-03DE855F463D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E99D40A-C0D4-4312-8954-03DE855F463D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

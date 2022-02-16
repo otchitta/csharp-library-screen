@@ -1,0 +1,34 @@
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:m="clr-namespace:Otchitta.Demo.Screen.Screen"
+        x:Class="Otchitta.Demo.Screen.Screen.MainScreenView"
+        x:ClassModifier="internal"
+        Title="画面ライブラリ(サンプル)"
+        Width="800"
+        Height="600">
+  <Window.DataContext>
+    <m:MainScreenData />
+  </Window.DataContext>
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="100*" />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+    <ComboBox ItemsSource="{Binding Path=SelectList}"
+              SelectedValue="{Binding Path=SelectData}"
+              SelectedValuePath="Item2"
+              DisplayMemberPath="Item1"
+              Grid.Row="1" />
+    <ContentControl Content="{Binding Path=SelectData}"
+                    Focusable="False"
+                    Grid.Row="2" />
+    <ContentControl Content="{Binding Path=DialogData}"
+                    Focusable="False"
+                    Grid.Row="1" Grid.RowSpan="2" />
+    <StatusBar Grid.Row="3">
+      <TextBlock Text="{Binding Path=StatusText}" />
+    </StatusBar>
+  </Grid>
+</Window>

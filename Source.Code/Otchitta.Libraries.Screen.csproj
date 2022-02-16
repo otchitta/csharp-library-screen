@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- プロジェクト基本設定 -->
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <!-- プロジェクト参照設定 -->
+  <!-- プロジェクト拡張設定 -->
+</Project>
