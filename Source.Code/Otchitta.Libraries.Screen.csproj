@@ -2,6 +2,14 @@
   <!-- プロジェクト基本設定 -->
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
+    <VersionPrefix>1.0.0</VersionPrefix>
+    <PackageId>Otchitta.Libraries.Screen</PackageId>
+    <Title>Otchitta Screen Library</Title>
+    <Authors>Otchitta</Authors>
+    <Description>画面ライブラリ</Description>
+    <Copyright>None.</Copyright>
+    <PackageProjectUrl>https://github.com/otchitta/csharp-library-screen</PackageProjectUrl>
+
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <!-- プロジェクト参照設定 -->
