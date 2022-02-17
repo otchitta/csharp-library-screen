@@ -35,9 +35,11 @@ internal sealed class Program : System.Windows.Application {
 		var source = new Program();
 		source.Regist(
 			// ライブラリ定義
-			new ResourceDictionary() { Source = new Uri("/Screen/ConfirmDialogData.xaml",        UriKind.Relative) },
+			new ResourceDictionary() { Source = new Uri("/Screen/Common/ConfirmDialogData.xaml",        UriKind.Relative) },
+			new ResourceDictionary() { Source = new Uri("/Screen/Common/WarningDialogData.xaml",        UriKind.Relative) },
 			// プログラム定義
-			new ResourceDictionary() { Source = new Uri("/Screen/Dialog/ConfirmScreenData.xaml", UriKind.Relative) }
+			new ResourceDictionary() { Source = new Uri("/Screen/Dialog/ConfirmScreenData.xaml", UriKind.Relative) },
+			new ResourceDictionary() { Source = new Uri("/Screen/Dialog/WarningScreenData.xaml", UriKind.Relative) }
 		);
 		source.StartupUri = new Uri("/Screen/MainScreenView.xaml", UriKind.Relative);
 

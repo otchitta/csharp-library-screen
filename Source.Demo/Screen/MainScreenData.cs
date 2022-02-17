@@ -76,19 +76,30 @@ internal sealed class MainScreenData : AbstractScreenData {
 
 	#region 内部メソッド定義
 	/// <summary>
+	/// 状態内容を生成します。
+	/// </summary>
+	/// <param name="source">選択情報</param>
+	/// <returns>状態内容</returns>
+	private string ChooseStatusText(bool? source) {
+		switch (source) {
+			default:    return "選択情報：不明";
+			case true:  return "選択情報：許可";
+			case false: return "選択情報：取消";
+		}
+	}
+	/// <summary>
 	/// 画面情報を処理します。
 	/// </summary>
 	/// <param name="source">発信情報</param>
 	/// <param name="option">引数情報</param>
 	private void ActionDialogData(object? source, EventArgs option) {
-		var param1 = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-		if (source is ConfirmDialogData value1) {
-			switch (value1.SelectData) {
-				default:    StatusText = $"[{param1}]選択情報：不明"; break;
-				case true:  StatusText = $"[{param1}]選択情報：許可"; break;
-				case false: StatusText = $"[{param1}]選択情報：取消"; break;
-			}
-			value1.SelectHook -= ActionDialogData;
+		var prefix = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+		if (source is ConfirmDialogData cache1) {
+			cache1.SelectHook -= ActionDialogData;
+			StatusText = ChooseStatusText(cache1.SelectData);
+		} else if (source is WarningDialogData cache2) {
+			cache2.SelectHook -= ActionDialogData;
+			StatusText = ChooseStatusText(cache2.SelectData);
 		}
 		DialogData = null;
 	}
@@ -98,8 +109,10 @@ internal sealed class MainScreenData : AbstractScreenData {
 	/// <param name="source">発信情報</param>
 	/// <param name="option">引数情報</param>
 	private void ActionSelectData(object? source, object option) {
-		if (option is ConfirmDialogData value1) {
-			value1.SelectHook += ActionDialogData;
+		if (option is ConfirmDialogData cache1) {
+			cache1.SelectHook += ActionDialogData;
+		} else if (option is WarningDialogData cache2) {
+			cache2.SelectHook += ActionDialogData;
 		}
 		DialogData = option;
 	}
@@ -109,6 +122,7 @@ internal sealed class MainScreenData : AbstractScreenData {
 	/// <returns>選択集合</returns>
 	private static IEnumerable<(string, OperateScreenData)> CreateSourceList() {
 		yield return ("確認ダイアログ", new ConfirmScreenData());
+		yield return ("警告ダイアログ", new WarningScreenData());
 	}
 	/// <summary>
 	/// 選択一覧を生成します。

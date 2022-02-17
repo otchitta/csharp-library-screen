@@ -1,0 +1,71 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:m="clr-namespace:Otchitta.Libraries.Screen.Data.Dialog;assembly=Otchitta.Libraries.Screen">
+  <DataTemplate DataType="{x:Type m:WarningDialogData}">
+    <Border Background="#80000000"
+            Padding="30"
+            FocusManager.FocusedElement="{Binding ElementName=CancelMenu}"
+            KeyboardNavigation.TabNavigation="Cycle">
+      <Grid>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="100*" />
+          <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Border BorderBrush="#FF000000"
+                BorderThickness="1"
+                CornerRadius="5,5,0,0"
+                Padding="5,2"
+                Grid.Row="0">
+          <Border.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+              <GradientStop Offset="0" Color="#FFFFFFAA" />
+              <GradientStop Offset="1" Color="#FFFFFFFF" />
+            </LinearGradientBrush>
+          </Border.Background>
+          <TextBlock Text="{Binding Path=HeaderText}" />
+        </Border>
+
+        <Border Background="#FFFFFFFF"
+                BorderBrush="#FF000000"
+                BorderThickness="1,0"
+                Grid.Row="1">
+          <ScrollViewer Padding="5"
+                        HorizontalScrollBarVisibility="Auto"
+                        VerticalScrollBarVisibility="Auto">
+            <ContentControl Content="{Binding Path=DetailData}"
+                            Focusable="False" />
+          </ScrollViewer>
+        </Border>
+
+        <Border Background="#FFAAAAAA"
+                BorderBrush="#FF000000"
+                BorderThickness="1"
+                CornerRadius="0,0,5,5"
+                Padding="0,3"
+                Grid.Row="2">
+          <Grid>
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="008*" />
+              <ColumnDefinition Width="040*" MinWidth="050" MaxWidth="100" />
+              <ColumnDefinition Width="004*" MinWidth="000" MaxWidth="020" />
+              <ColumnDefinition Width="040*" MinWidth="050" MaxWidth="100" />
+              <ColumnDefinition Width="008*" />
+            </Grid.ColumnDefinitions>
+            <Button x:Name="AcceptMenu"
+                    Content="続　行"
+                    Command="{Binding Path=SelectMenu}"
+                    CommandParameter="accept"
+                    Grid.Column="1" />
+            <Button x:Name="CancelMenu"
+                    Content="キャンセル"
+                    Command="{Binding Path=SelectMenu}"
+                    CommandParameter="cancel"
+                    Grid.Column="3" />
+          </Grid>
+        </Border>
+      </Grid>
+    </Border>
+  </DataTemplate>
+</ResourceDictionary>

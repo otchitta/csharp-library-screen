@@ -8,7 +8,7 @@ namespace Otchitta.Demo.Screen.Screen.Dialog;
 /// <summary>
 /// 確認画面情報クラスです。
 /// </summary>
-internal sealed class ConfirmScreenData : AbstractScreenData, OperateScreenData {
+internal sealed class WarningScreenData : AbstractScreenData, OperateScreenData {
 	#region メンバー変数定義
 	/// <summary>
 	/// 表題内容
@@ -78,9 +78,9 @@ internal sealed class ConfirmScreenData : AbstractScreenData, OperateScreenData 
 	/// <summary>
 	/// 確認画面情報を生成します。
 	/// </summary>
-	public ConfirmScreenData() {
-		this.headerText = "削除確認";
-		this.detailText = "以下のデータを削除しますがよろしいですか？\r\n番号：ITEM0001\r\n名称：デモプログラム\r\n備考：画面デモを行うクラス";
+	public WarningScreenData() {
+		this.headerText = "入力確認";
+		this.detailText = "入力された発注数が警告となる数量となりました。\r\n以下の発注を行いますがよろしいですか？\r\n商品名：○○○\r\n発注数：10,000\r\n支払額：\\1,000,000";
 		this.remarkText = null;
 		this.invokeMenu = null;
 		this.listenList = null;
@@ -98,7 +98,7 @@ internal sealed class ConfirmScreenData : AbstractScreenData, OperateScreenData 
 			RemarkText = "詳細内容を入力してください。";
 		} else {
 			RemarkText = null;
-			this.listenList?.Invoke(this, new ConfirmDialogData(this.headerText, this.detailText));
+			this.listenList?.Invoke(this, new WarningDialogData(this.headerText, this.detailText));
 		}
 	}
 	#endregion 内部メソッド定義
