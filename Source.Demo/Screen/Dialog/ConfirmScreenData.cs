@@ -8,7 +8,7 @@ namespace Otchitta.Demo.Screen.Screen.Dialog;
 /// <summary>
 /// 確認画面情報クラスです。
 /// </summary>
-public sealed class ConfirmScreenData : AbstractScreenData, OperateScreenData {
+internal sealed class ConfirmScreenData : AbstractScreenData, OperateScreenData {
 	#region メンバー変数定義
 	/// <summary>
 	/// 表題内容
