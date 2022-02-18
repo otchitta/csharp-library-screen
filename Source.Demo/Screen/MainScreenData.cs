@@ -123,6 +123,7 @@ internal sealed class MainScreenData : AbstractScreenData {
 	private static IEnumerable<(string, OperateScreenData)> CreateSourceList() {
 		yield return ("確認ダイアログ", new ConfirmScreenData());
 		yield return ("警告ダイアログ", new WarningScreenData());
+		yield return ("障害ダイアログ", new FailureScreenData());
 	}
 	/// <summary>
 	/// 選択一覧を生成します。
