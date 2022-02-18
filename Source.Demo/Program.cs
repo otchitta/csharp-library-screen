@@ -35,10 +35,12 @@ internal sealed class Program : System.Windows.Application {
 		var source = new Program();
 		source.Regist(
 			// ライブラリ定義
-			new ResourceDictionary() { Source = new Uri("/Screen/Common/ConfirmDialogData.xaml",        UriKind.Relative) },
-			new ResourceDictionary() { Source = new Uri("/Screen/Common/WarningDialogData.xaml",        UriKind.Relative) },
-			new ResourceDictionary() { Source = new Uri("/Screen/Common/FailureDialogData.xaml",        UriKind.Relative) },
+			new ResourceDictionary() { Source = new Uri("/Screen/Common/MessageDialogData.xaml", UriKind.Relative) },
+			new ResourceDictionary() { Source = new Uri("/Screen/Common/ConfirmDialogData.xaml", UriKind.Relative) },
+			new ResourceDictionary() { Source = new Uri("/Screen/Common/WarningDialogData.xaml", UriKind.Relative) },
+			new ResourceDictionary() { Source = new Uri("/Screen/Common/FailureDialogData.xaml", UriKind.Relative) },
 			// プログラム定義
+			new ResourceDictionary() { Source = new Uri("/Screen/Dialog/MessageScreenData.xaml", UriKind.Relative) },
 			new ResourceDictionary() { Source = new Uri("/Screen/Dialog/ConfirmScreenData.xaml", UriKind.Relative) },
 			new ResourceDictionary() { Source = new Uri("/Screen/Dialog/WarningScreenData.xaml", UriKind.Relative) },
 			new ResourceDictionary() { Source = new Uri("/Screen/Dialog/FailureScreenData.xaml", UriKind.Relative) }

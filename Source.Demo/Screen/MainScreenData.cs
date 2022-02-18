@@ -94,12 +94,14 @@ internal sealed class MainScreenData : AbstractScreenData {
 	/// <param name="option">引数情報</param>
 	private void ActionDialogData(object? source, EventArgs option) {
 		var prefix = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-		if (source is ConfirmDialogData cache1) {
+		if (source is MessageDialogData cache1) {
 			cache1.SelectHook -= ActionDialogData;
-			StatusText = ChooseStatusText(cache1.SelectData);
-		} else if (source is WarningDialogData cache2) {
+		} else if (source is ConfirmDialogData cache2) {
 			cache2.SelectHook -= ActionDialogData;
 			StatusText = ChooseStatusText(cache2.SelectData);
+		} else if (source is WarningDialogData cache3) {
+			cache3.SelectHook -= ActionDialogData;
+			StatusText = ChooseStatusText(cache3.SelectData);
 		}
 		DialogData = null;
 	}
@@ -109,10 +111,12 @@ internal sealed class MainScreenData : AbstractScreenData {
 	/// <param name="source">発信情報</param>
 	/// <param name="option">引数情報</param>
 	private void ActionSelectData(object? source, object option) {
-		if (option is ConfirmDialogData cache1) {
+		if (option is MessageDialogData cache1) {
 			cache1.SelectHook += ActionDialogData;
-		} else if (option is WarningDialogData cache2) {
+		} else if (option is ConfirmDialogData cache2) {
 			cache2.SelectHook += ActionDialogData;
+		} else if (option is WarningDialogData cache3) {
+			cache3.SelectHook += ActionDialogData;
 		}
 		DialogData = option;
 	}
@@ -121,6 +125,7 @@ internal sealed class MainScreenData : AbstractScreenData {
 	/// </summary>
 	/// <returns>選択集合</returns>
 	private static IEnumerable<(string, OperateScreenData)> CreateSourceList() {
+		yield return ("通知ダイアログ", new MessageScreenData());
 		yield return ("確認ダイアログ", new ConfirmScreenData());
 		yield return ("警告ダイアログ", new WarningScreenData());
 		yield return ("障害ダイアログ", new FailureScreenData());
