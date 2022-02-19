@@ -11,7 +11,7 @@ internal sealed class Program : System.Windows.Application {
 	/// 実行処理クラスを生成します。
 	/// </summary>
 	private Program() {
-		//InitializeComponent();
+		// 処理なし
 	}
 
 	/// <summary>
@@ -39,11 +39,13 @@ internal sealed class Program : System.Windows.Application {
 			new ResourceDictionary() { Source = new Uri("/Screen/Common/ConfirmDialogData.xaml", UriKind.Relative) },
 			new ResourceDictionary() { Source = new Uri("/Screen/Common/WarningDialogData.xaml", UriKind.Relative) },
 			new ResourceDictionary() { Source = new Uri("/Screen/Common/FailureDialogData.xaml", UriKind.Relative) },
+			new ResourceDictionary() { Source = new Uri("/Screen/Common/StorageDialogData.xaml", UriKind.Relative) },
 			// プログラム定義
 			new ResourceDictionary() { Source = new Uri("/Screen/Dialog/MessageScreenData.xaml", UriKind.Relative) },
 			new ResourceDictionary() { Source = new Uri("/Screen/Dialog/ConfirmScreenData.xaml", UriKind.Relative) },
 			new ResourceDictionary() { Source = new Uri("/Screen/Dialog/WarningScreenData.xaml", UriKind.Relative) },
-			new ResourceDictionary() { Source = new Uri("/Screen/Dialog/FailureScreenData.xaml", UriKind.Relative) }
+			new ResourceDictionary() { Source = new Uri("/Screen/Dialog/FailureScreenData.xaml", UriKind.Relative) },
+			new ResourceDictionary() { Source = new Uri("/Screen/Dialog/StorageScreenData.xaml", UriKind.Relative) }
 		);
 		source.StartupUri = new Uri("/Screen/MainScreenView.xaml", UriKind.Relative);
 

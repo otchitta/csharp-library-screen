@@ -1,0 +1,154 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:m="clr-namespace:Otchitta.Libraries.Screen.Data.Dialog;assembly=Otchitta.Libraries.Screen"
+                    xmlns:c="clr-namespace:Otchitta.Demo.Screen.Screen.Common">
+  <DataTemplate DataType="{x:Type m:StorageDialogData}">
+    <Border Background="#80000000"
+            Padding="30"
+            FocusManager.FocusedElement="{Binding ElementName=CancelMenu}"
+            KeyboardNavigation.TabNavigation="Cycle">
+      <Grid>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="100*" />
+          <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Border BorderBrush="#FF000000"
+                BorderThickness="1"
+                CornerRadius="5,5,0,0"
+                Padding="5,2"
+                Grid.Row="0">
+          <Border.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+              <GradientStop Offset="0" Color="#FFAAAAAA" />
+              <GradientStop Offset="1" Color="#FFFFFFFF" />
+            </LinearGradientBrush>
+          </Border.Background>
+          <TextBlock Text="{Binding Path=HeaderText}" />
+        </Border>
+
+        <Border Background="#FFFFFFFF"
+                BorderBrush="#FF000000"
+                BorderThickness="1,0"
+                Padding="5"
+                Grid.Row="1">
+          <Grid>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="100*" />
+              <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <TextBlock Text="{Binding Path=DetailText}"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Margin="0,0,0,5"
+                       Grid.Row="0" />
+            <Grid Grid.Row="1">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30*" />
+                <ColumnDefinition Width="005" />
+                <ColumnDefinition Width="70*" />
+              </Grid.ColumnDefinitions>
+              <TreeView ItemsSource="{Binding Path=DivideData.ClientList}"
+                        Grid.Column="0">
+                <TreeView.ItemTemplate>
+                  <HierarchicalDataTemplate DataType="{x:Type m:StorageDivideData}"
+                                            ItemsSource="{Binding Path=ClientList}">
+                    <TextBlock Text="{Binding Path=SourceName}" />
+                  </HierarchicalDataTemplate>
+                </TreeView.ItemTemplate>
+                <TreeView.ItemContainerStyle>
+                  <Style TargetType="{x:Type TreeViewItem}">
+                    <Setter Property="IsSelected" Value="{Binding Path=SelectFlag}" />
+                    <Setter Property="IsExpanded" Value="{Binding Path=ExpandFlag}" />
+                  </Style>
+                </TreeView.ItemContainerStyle>
+              </TreeView>
+              <GridSplitter ResizeBehavior="PreviousAndNext"
+                            ResizeDirection="Columns"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            Grid.Column="1" />
+              <DataGrid ItemsSource="{Binding Path=DetailList}"
+                        SelectedValue="{Binding Path=SelectData}"
+                        SelectedValuePath="SourceData"
+                        AutoGenerateColumns="False"
+                        HeadersVisibility="Column"
+                        IsReadOnly="True"
+                        Grid.Column="2">
+                <DataGrid.Columns>
+                  <DataGridTextColumn Header="ファイル名" Binding="{Binding Path=SourceName}" />
+                  <DataGridTextColumn Header="更新日時"   Binding="{Binding Path=UpdateTime, StringFormat={}{0:yyyy\-MM\-dd HH\:mm\:ss}}" MaxWidth="116" />
+                  <DataGridTextColumn Header="サイズ"     Binding="{Binding Path=SourceSize, StringFormat={}{0:#,0}}" Width="100">
+                    <DataGridTextColumn.ElementStyle>
+                      <Style TargetType="{x:Type TextBlock}">
+                        <Setter Property="TextAlignment" Value="Right" />
+                      </Style>
+                    </DataGridTextColumn.ElementStyle>
+                  </DataGridTextColumn>
+                </DataGrid.Columns>
+              </DataGrid>
+            </Grid>
+            <Grid Margin="0,5,0,0"
+                  Grid.Row="2">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="100*" />
+                <ColumnDefinition Width="Auto" />
+              </Grid.ColumnDefinitions>
+              <TextBlock Text="ファイル："
+                         HorizontalAlignment="Right"
+                         VerticalAlignment="Center"
+                         Grid.Column="0" />
+              <TextBox Text="{Binding Path=SelectData}"
+                       Grid.Column="1" />
+              <ComboBox ItemsSource="{Binding Path=FilterList}"
+                        SelectedIndex="{Binding Path=FilterCode}"
+                        DisplayMemberPath="SourceName"
+                        MinWidth="100"
+                        Margin="5,0,0,0"
+                        Grid.Column="2">
+                <ComboBox.Style>
+                  <Style TargetType="{x:Type ComboBox}">
+                    <Style.Triggers>
+                      <DataTrigger Binding="{Binding Path=FilterList.Count}" Value="0">
+                        <Setter Property="Visibility" Value="Collapsed" />
+                      </DataTrigger>
+                    </Style.Triggers>
+                  </Style>
+                </ComboBox.Style>
+              </ComboBox>
+            </Grid>
+          </Grid>
+        </Border>
+
+        <Border Background="#FFAAAAAA"
+                BorderBrush="#FF000000"
+                BorderThickness="1"
+                CornerRadius="0,0,5,5"
+                Padding="0,3"
+                Grid.Row="2">
+          <Grid>
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="008*" />
+              <ColumnDefinition Width="040*" MinWidth="050" MaxWidth="100" />
+              <ColumnDefinition Width="004*" MinWidth="000" MaxWidth="020" />
+              <ColumnDefinition Width="040*" MinWidth="050" MaxWidth="100" />
+              <ColumnDefinition Width="008*" />
+            </Grid.ColumnDefinitions>
+            <Button x:Name="AcceptMenu"
+                    Content="Ｏ　Ｋ"
+                    Command="{Binding Path=SelectMenu}"
+                    CommandParameter="accept"
+                    Grid.Column="1" />
+            <Button x:Name="CancelMenu"
+                    Content="キャンセル"
+                    Command="{Binding Path=SelectMenu}"
+                    CommandParameter="cancel"
+                    Grid.Column="3" />
+          </Grid>
+        </Border>
+      </Grid>
+    </Border>
+  </DataTemplate>
+</ResourceDictionary>

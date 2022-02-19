@@ -93,7 +93,6 @@ internal sealed class MainScreenData : AbstractScreenData {
 	/// <param name="source">発信情報</param>
 	/// <param name="option">引数情報</param>
 	private void ActionDialogData(object? source, EventArgs option) {
-		var prefix = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 		if (source is MessageDialogData cache1) {
 			cache1.SelectHook -= ActionDialogData;
 		} else if (source is ConfirmDialogData cache2) {
@@ -102,6 +101,9 @@ internal sealed class MainScreenData : AbstractScreenData {
 		} else if (source is WarningDialogData cache3) {
 			cache3.SelectHook -= ActionDialogData;
 			StatusText = ChooseStatusText(cache3.SelectData);
+		} else if (source is StorageDialogData cache4) {
+			cache4.SelectHook -= ActionDialogData;
+			StatusText = $"選択情報：{cache4.SelectFile}";
 		}
 		DialogData = null;
 	}
@@ -117,6 +119,8 @@ internal sealed class MainScreenData : AbstractScreenData {
 			cache2.SelectHook += ActionDialogData;
 		} else if (option is WarningDialogData cache3) {
 			cache3.SelectHook += ActionDialogData;
+		} else if (option is StorageDialogData cache4) {
+			cache4.SelectHook += ActionDialogData;
 		}
 		DialogData = option;
 	}
@@ -129,6 +133,7 @@ internal sealed class MainScreenData : AbstractScreenData {
 		yield return ("確認ダイアログ", new ConfirmScreenData());
 		yield return ("警告ダイアログ", new WarningScreenData());
 		yield return ("障害ダイアログ", new FailureScreenData());
+		yield return ("選択ダイアログ", new StorageScreenData());
 	}
 	/// <summary>
 	/// 選択一覧を生成します。
