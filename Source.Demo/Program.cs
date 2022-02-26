@@ -6,7 +6,7 @@ namespace Otchitta.Demo;
 /// <summary>
 /// 実行処理クラスです。
 /// </summary>
-internal sealed class Program : System.Windows.Application {
+internal sealed class Program : Application {
 	/// <summary>
 	/// 実行処理クラスを生成します。
 	/// </summary>
